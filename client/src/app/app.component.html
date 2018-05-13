@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<header class="clearfix">
+  <div class="container">
+    <div class="header-left">
+      <h1>ЧекMe</h1>
+    </div>
+    <div class="header-right">
+      <label for="open">
+        <span class="hidden-desktop"></span>
+      </label>
+      <input type="checkbox" name="" id="open">
+      <nav>
+          <li class="dropdown main-menu-item" *ngIf="isAuthenticated()">
+            <a class="link" routerLink="user-operations" routerLinkActive="active">
+              Операции пользователя</a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="user-operations/check-operations/add-check" routerLinkActive="active">Добавление чека</a>
+              </li>
+              <li><a routerLink="user-operations/check-operations/show-check" routerLinkActive="active">Просмотр чека</a>
+              </li>
+            </ul>
+          </li>
+         <a routerLink="user-operations/statistics" routerLinkActive="" *ngIf="isAuthenticated()">Статистика</a>
+          <a routerLink="login" routerLinkActive="active" *ngIf="!isAuthenticated()">{{title}}</a>
+          <a (click)="logout()" *ngIf="isAuthenticated()">Выход</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div>
+  <router-outlet id="router"></router-outlet>
+</div>
+
+<app-modal class="app-modal" #errormodal>
+  <div class="app-modal-body">
+    <p>
+      {{message}}
+    </p>
+  </div>
+  <div class="app-modal-footer">
+    <div class="btn-toolbar form-group reg">
+      <input type="submit" class="btn btn-default" value="Закрыть" (click)="errormodal.hide()">
+    </div>
+  </div>
+</app-modal>

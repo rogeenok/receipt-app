@@ -1,0 +1,119 @@
+<div class="row component-row">
+  <div class="col-md-4 col-md-offset-1">
+    <form #addCheckForm=ngForm autocomplete="off">
+      <h3 align="center" class="data-tabel">Данные чека</h3>
+      <div class="container center_div add_div table-bordered">
+        <b class="add-check"><abbr title="Фискальные данные">ФД:</abbr></b><br>
+        <div class="form-group">
+          <input class="form-control add-check" minlength="4" maxlength="7" pattern="^[0-9]+$" name="fdocumentn"
+                 [(ngModel)]="postCheckData.fiscalDocumentNumber"
+                 size="40"
+                 #fdocumentn="ngModel" required>
+          <div *ngIf="fdocumentn.invalid && (fdocumentn.dirty || fdocumentn.touched)"
+               class="alert alert-danger add-check">
+            <div *ngIf="fdocumentn.errors.pattern">
+              ФД состоит из цифр
+            </div>
+            <div *ngIf="fdocumentn.errors.required">
+              Данное поле обязательно
+            </div>
+            <div *ngIf="fdocumentn.errors.minlength">
+              ФД состоит из 4-7 символов
+            </div>
+          </div>
+        </div>
+        <b class="add-check"><abbr title="Фискальный накопитель">ФН:</abbr></b><br>
+        <div class="form-group">
+          <input class="form-control add-check" minlength="16" maxlength="16" pattern="^[0-9]+$" name="fdriven"
+                 [(ngModel)]="postCheckData.fiscalDriveNumber" size="40" #fdriven="ngModel" required>
+          <div *ngIf="fdriven.invalid && (fdriven.dirty || fdriven.touched)"
+               class="alert alert-danger add-check">
+            <div *ngIf="fdriven.errors.pattern">
+              ФН состоит из цифр
+            </div>
+            <div *ngIf="fdriven.errors.required">
+              Данное поле обязательно
+            </div>
+            <div *ngIf="fdriven.errors.minlength">
+              ФН состоит из 16 символов
+            </div>
+          </div>
+        </div>
+        <b class="add-check"><abbr title="Фискальный признак документа">ФП(ФПД):</abbr></b><br>
+        <div class="form-group">
+          <input class="form-control add-check" minlength="8" maxlength="10" pattern="^[0-9]+$" name="fs"
+                 [(ngModel)]="postCheckData.fiscalSign"
+                 size="40"
+                 #fs="ngModel" required>
+          <div *ngIf="fs.invalid && (fs.dirty || fs.touched)"
+               class="alert alert-danger add-check">
+            <div *ngIf="fs.errors.pattern">
+              ФП состоит из цифр
+            </div>
+            <div *ngIf="fs.errors.required">
+              Данное поле обязательно
+            </div>
+            <div *ngIf="fs.errors.minlength">
+              ФПД состоит из 8-10 символов
+            </div>
+          </div>
+        </div>
+        <div class="btn-toolbar form-group">
+          <input type="submit" [disabled]="fdriven.invalid || fdocumentn.invalid || fs.invalid || !checkDone || sending"
+                 class="btn btn-primary" value="Добавить чек" (click)="submit(postCheckData,addCheckForm,addPlaceForm)">
+          <input type="reset" class="btn btn-default"
+                 value="Очистить форму">
+        </div>
+      </div>
+    </form>
+
+    <form #addPlaceForm="ngForm" autocomplete="off">
+      <h3 align="center">Данные магазина</h3>
+      <div class="container center_div add_div table-bordered">
+        <b class="add-place"><abbr title="Название нового магазина">Название:</abbr></b><br>
+        <div class="form-group">
+          <input class="form-control add-place" minlength="4" maxlength="20" pattern="^[a-zA-Z\u0400-\u04FF]{1}[\w\u0400-\u04FF'\-. ]*$"
+                 name="placeName" [(ngModel)]="newPlace.name" size="40" #placeName="ngModel" required
+                 [disabled]="placeDone">
+          <div *ngIf="placeName.invalid && (placeName.dirty || placeName.touched)"
+               class="alert alert-danger add-place">
+            <div *ngIf="placeName.errors.pattern">
+              Название магазина должно начинаться с буквы и не содержать специальных символов
+            </div>
+            <div *ngIf="placeName.errors.required">
+              Данное поле обязательно
+            </div>
+            <div *ngIf="placeName.errors.minlength">
+              Название магазина должно быть от 4 символов
+            </div>
+          </div>
+        </div>
+        <b class="add-place"><abbr title="Адрес магазина (в формате 'Улица' 'дом' ['корпус'])">Адрес:</abbr></b><br>
+        <div class="form-group">
+          <input class="form-control add-place" minlength="5" maxlength="30" pattern="^[\w\u0400-\u04FF'\-. ]*$"
+                 name="placeAddress" [(ngModel)]="newPlace.address" size="80" #placeAddress="ngModel" required
+                 [disabled]="placeDone">
+          <div *ngIf="placeAddress.invalid && (placeAddress.dirty || placeAddress.touched)"
+               class="alert alert-danger add-place">
+            <div *ngIf="placeAddress.errors.pattern">
+              Адрес магазина должен быть в формате 'Улица' 'дом' ('корпус')
+            </div>
+            <div *ngIf="placeAddress.errors.required">
+              Данное поле обязательно
+            </div>
+            <div *ngIf="placeAddress.errors.minlength">
+              Длина адреса должна быть от 5 символов
+            </div>
+          </div>
+        </div>
+        <div class="btn-toolbar form-group">
+          <input type="submit" class="btn btn-success" value="Добавить магазин"
+                 [disabled]="placeName.invalid || placeDone" (click)="addPlace(addPlaceForm,false)">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <app-place-list (currentCoords)="setCurrentCoords($event)" (currentPlace)="setCurrentPlace($event)"></app-place-list>
+  </div>
+</div>

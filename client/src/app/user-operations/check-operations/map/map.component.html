@@ -1,0 +1,8 @@
+<agm-map [latitude]=lat [longitude]=lng [zoom]=10 (mapClick)="setMarkerEvent($event.coords)"
+         [styles]="[{ featureType : 'transit', elementType : 'all', stylers : [{visibility: 'off'}] }]">
+  <agm-marker [latitude]=marker.latitude [longitude]=marker.longitude></agm-marker>
+  <agm-circle (circleClick)="setMarkerEvent($event.coords)" [radius]=radius [latitude]=marker.latitude [longitude]=marker.longitude ></agm-circle>
+  <agm-marker *ngFor="let place of shortPlaces" [latitude]=place?.coords.latitude [longitude]=place?.coords.longitude></agm-marker>
+</agm-map>
+
+

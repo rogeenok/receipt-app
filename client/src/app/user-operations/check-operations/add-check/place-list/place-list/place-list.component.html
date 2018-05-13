@@ -1,0 +1,17 @@
+<div class="row map">
+  <div class="col-md-12">
+    <app-map [radius]="radius" (coords)="getCoords($event)"></app-map>
+  </div>
+</div>
+<div class="row map">
+  <div class="col-md-12">
+    <form class="form-group">
+      <ol class="rectangle">
+        <li *ngFor="let place of places">
+          <p (click)="getCurrentPlace(place); setOption(place.id)" ><input type="radio"  [disabled]="newPlaceAdded" [checked]="place.id == selectedOption"><label>Название: </label> {{place?.name}}<br/><label>Адрес: </label> {{place?.address}}</p>
+        </li>
+        <li><p *ngIf="newPlaceAdded"><input type="radio"  [disabled]="newPlaceAdded" [checked]="true"><label>Название: </label> {{newPlace.name}}<br/><label>Адрес: </label> {{newPlace.address}}</p></li>
+      </ol>
+    </form>
+  </div>
+</div>

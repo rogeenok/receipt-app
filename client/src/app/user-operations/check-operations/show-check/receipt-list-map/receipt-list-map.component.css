@@ -1,0 +1,148 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+
+
+.range {
+  display: table;
+  position: relative;
+  height: 25px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.range input[type="range"] {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  display: table-cell;
+  width: 100%;
+  background-color: transparent;
+  height: 25px;
+  cursor: pointer;
+}
+.range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -ms-appearance: none !important;
+  -o-appearance: none !important;
+  appearance: none !important;
+
+  width: 11px;
+  height: 25px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0px;
+  background-color: rgb(153, 153, 153);
+}
+.range output {
+  display: table-cell;
+  padding: 3px 5px 2px;
+  min-width: 40px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(153, 153, 153);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+.range input[type="range"] {
+  outline: none;
+}
+
+.range.range-primary input[type="range"]::-webkit-slider-thumb {
+  background-color: #0b1638;
+}
+
+.range.range-primary output {
+  background-color: #0b1638;
+}
+.range.range-primary input[type="range"] {
+  outline-color: #0b1638;
+}
+
+#radius-header{
+  font-size: 20px;
+}
+
+.map{
+  margin-top: 15px;
+}
+
+.rectangle {
+  counter-reset: li;
+  list-style: none;
+  font: 14px "Trebuchet MS", "Lucida Sans";
+  padding: 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rectangle p {
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em .8em;
+  margin: .5em 0 .5em 2.5em;
+  background: #E8E8E8;
+  color: #444;
+  text-decoration: none;
+  transition: all .3s ease-out;
+}
+.rectangle p:hover {background: #DCDDE1;}
+
+.rectangle input {
+  position: absolute;
+  left: -2.5em;
+  top: 50%;
+  margin-top: -1em;
+  background: #9097A2;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+.rectangle p:after {
+  position: absolute;
+  content: "";
+  border: .5em solid transparent;
+  left: -1em;
+  top: 50%;
+  margin-top: -.5em;
+  transition: all .3s ease-out;
+}
+.rectangle p:hover:after {
+  left: -.5em;
+  border-left-color: #0b1638;
+}
+
+.info{
+  width:100%;
+  text-align: center;
+}
+
+
+
+

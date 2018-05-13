@@ -1,0 +1,29 @@
+<div class="row scrollbar" id="style-3">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <p>ФН: {{check.fiscalDriveNumber}}</p>
+      <p>ФД: {{check.fiscalDocumentNumber}}</p>
+      <p>ФПД: {{check.fiscalSign}}</p>
+      <p *ngIf="check.nds10">НДС10: {{check.nds10}}</p>
+      <p *ngIf="check.nds18">НДС18: {{check.nds18}}</p>
+      <label *ngIf="check.items"> Позиции:</label>
+      <div class="row">
+        <div class="col-md-12">
+          <ul *ngIf="check.items">
+            <li *ngFor="let item of check.items" class="check-item">
+
+              <p>Название: <br/>{{item.name}}</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p>Цена: {{item.price}}</p></div>
+                <div class="col-md-6">
+                  <p *ngIf="item.quantity">Количество: {{item.quantity}}</p></div>
+              </div>
+              <p>В т.ч. НДС: {{item.ndsSum}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

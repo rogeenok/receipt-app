@@ -1,0 +1,17 @@
+**/build/
+**/bin/
+**/settings.gradle
+**/.gradle/
+.classpath
+**/.metadata/
+**/.recommenders/
+**/.settings/
+**/.classpath
+**/.project
+**/target/
+**/.idea/
+*.iml
+*.iws
+*.ipr
+.mvn/
+src/main/resources/META-INF/

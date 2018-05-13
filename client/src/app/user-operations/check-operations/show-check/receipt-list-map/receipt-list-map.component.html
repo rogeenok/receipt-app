@@ -1,0 +1,27 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <p id="radius-header">Радиус поиска:</p>
+    <div class="range range-primary ">
+      <input type="range" name="range" min="0" max="10000" [(ngModel)]="radius" onchange="range.value=value" (change)="getPlaces()">
+      <output id="range" (change)="getPlaces()">{{radius}}</output>
+    </div>
+  </div>
+</div>
+<div class="row map">
+  <div class="col-md-12">
+    <app-map [radius]="radius" (coords)="getCoords($event)" [shortPlaces]="getCheckPlaces"></app-map>
+  </div>
+</div>
+<div class="row map">
+  <div class="col-md-12">
+    <form class="form-group">
+      <ol class="rectangle">
+        <li *ngFor="let place of getCheckPlaces">
+          <p (click)="checkPlace(place)"><input type="checkbox" [checked]="place?.selected"><label>Название: </label>{{place?.name}}
+          </p>
+        </li>
+      </ol>
+    </form>
+  </div>
+</div>
