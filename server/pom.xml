@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	<groupId>com.netcracker.checkapp</groupId>
+	<groupId>com.dip.checkapp</groupId>
 	<artifactId>server</artifactId>
 	<version>1.0</version>
     <packaging>jar</packaging>
     <parent>
-        <groupId>NetcrackerPractice</groupId>
+        <groupId>DIP-RECEIPTS</groupId>
         <artifactId>check-app</artifactId>
-        <version>0.1-hot</version>
+        <version>1.0</version>
     </parent>
     <name>server</name>
-    <description>Demo project for Spring Boot</description>
+    <description>DIP-receipts Projects</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -38,7 +38,7 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netcracker.client</groupId>
+            <groupId>com.dip.client</groupId>
             <artifactId>client</artifactId>
             <version>1.2</version>
             <scope>runtime</scope>

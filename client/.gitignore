@@ -45,3 +45,4 @@ Thumbs.db
 # Files
 src/assets/data.json
 *.iml
+/.scannerwork/
