@@ -1,5 +1,6 @@
 package com.netcracker.checkapp.server.persistance.customs;
 
+import com.netcracker.checkapp.server.model.DateStats;
 import com.netcracker.checkapp.server.model.ShopStats;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface CheckRepositoryCustom {
     and it should be implemented customly
     */
     List<ShopStats> getShopStats();
+
+    List<DateStats> getDateStats();
 }

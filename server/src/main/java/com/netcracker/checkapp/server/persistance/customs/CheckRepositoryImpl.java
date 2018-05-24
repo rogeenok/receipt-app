@@ -1,5 +1,6 @@
 package com.netcracker.checkapp.server.persistance.customs;
 
+import com.netcracker.checkapp.server.model.DateStats;
 import com.netcracker.checkapp.server.model.ShopStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -36,5 +37,25 @@ public class CheckRepositoryImpl implements CheckRepositoryCustom {
         List<ShopStats> shopStats = shopStatsAggregationResults.getMappedResults();
 
         return shopStats;
+    }
+
+    @Override
+    public List<DateStats> getDateStats() {
+
+        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        // this will aggregate for all years, so fix it with year as parameter!!
+        Aggregation agg = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("username").is(principal.getUsername())),
+                Aggregation.project("totalSum").and("dateTime").extractMonth().as("month"),
+                Aggregation.group("month").sum("totalSum").as("sum")
+        );
+
+        AggregationResults<DateStats> dateStatsAggregationResults
+                = mongoTemplate.aggregate(agg,"checks",DateStats.class);
+
+        List<DateStats> dateStats = dateStatsAggregationResults.getMappedResults();
+
+        return dateStats;
     }
 }

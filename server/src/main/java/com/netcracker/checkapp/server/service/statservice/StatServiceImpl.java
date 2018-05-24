@@ -54,6 +54,7 @@ public class StatServiceImpl implements StatService {
         }
 
         map.put("shopStats",checkRepository.getShopStats());
+        map.put("dateStats",checkRepository.getDateStats());
 
         return map;
     }
