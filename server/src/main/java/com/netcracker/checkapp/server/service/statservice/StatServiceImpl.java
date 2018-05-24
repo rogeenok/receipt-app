@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -42,10 +43,14 @@ public class StatServiceImpl implements StatService {
 //        Check minCheck = userChecks.stream().reduce((c1,c2) -> c1.getTotalSum().compareTo(c2.getTotalSum()) == -1 ? c1 : c2).orElse(null);
 //        map.put("minTotalSum",String.valueOf(minCheck.getTotalSum()));
 
-            double median = (userChecks.size() % 2 == 1)
-                    ? userChecks.get(userChecks.size() / 2).getTotalSum().doubleValue()
-                    : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
-            map.put("medTotalSum", String.valueOf(median));
+//            double median = (userChecks.size() % 2 == 1)
+//                    ? userChecks.get(userChecks.size() / 2).getTotalSum().doubleValue()
+//                    : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
+//            map.put("medTotalSum", String.valueOf(median));
+            BigDecimal avg =
+                    userChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1.add(ts2)).orElse(new BigDecimal(0))
+                            .divide(new BigDecimal(userChecks.size()));
+            map.put("avgTotalSum",String.valueOf(avg));
         }
 
         map.put("shopStats",checkRepository.getShopStats());
