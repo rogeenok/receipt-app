@@ -22,23 +22,16 @@ public class StatServiceImpl implements StatService {
     }
 
     @Override
-    public Map<String, String> getStats() {
-        Map<String, String> map = new HashMap<>();
+    public Map<String, Object> getStats() {
+        Map<String, Object> map = new HashMap<>();
         UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Check> userChecks = checkRepository.findByUsername(principal.getUsername());
-        List<Check> allChecks = checkRepository.findAll();
 
         if (userChecks.size() == 0) {
             map.put("totalChecks","0");
             map.put("minTotalSum","0.00");
             map.put("maxTotalSum","0.00");
             map.put("medTotalSum","0.00");
-
-            if (allChecks.size() == 0) {
-                map.put("totalChecksAll","0");
-                map.put("totalSumAll","0.00");
-                return map;
-            }
         } else {
 
             userChecks.sort(Comparator.comparing(Check::getTotalSum));
@@ -58,11 +51,6 @@ public class StatServiceImpl implements StatService {
                     : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
             map.put("medTotalSum", String.valueOf(median));
         }
-
-        map.put("totalChecksAll",String.valueOf(allChecks.size()));
-
-        BigDecimal sum = allChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1.add(ts2)).orElse(new BigDecimal(0));
-        map.put("totalSumAll",String.valueOf(sum));
 
         return map;
     }

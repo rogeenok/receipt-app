@@ -29,7 +29,7 @@ public class CheckServiceImpl implements CheckService {
     private String NALOG_RU = "http://proverkacheka.nalog.ru:8888/v1/inns/*/kkts/*/" +
             "fss/%s/tickets/%s?fiscalSign=%s&sendToEmail=no";
     private final static String AUTHORIZATION = "Authorization";
-    private final static String AUTHORIZATION_VALUE = "Basic Kzc5MTE3OTcyMDY0OjExMDM1MQ==";
+    private final static String AUTHORIZATION_VALUE = "Basic Kzc5MDA2NTQ1MjQyOjEyNTYxNw==";
     private final static String DEVICE_ID = "Device-Id";
     private final static String DEVICE_ID_VALUE = "546112";
     private final static String DEVICE_OS = "Device-OS";

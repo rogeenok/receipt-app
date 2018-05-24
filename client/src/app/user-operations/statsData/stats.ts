@@ -3,6 +3,4 @@ export class Stats {
   minTotalSum : String;
   maxTotalSum : String;
   medTotalSum : String;
-  totalChecksAll : String;
-  totalSumAll : String;
 }
