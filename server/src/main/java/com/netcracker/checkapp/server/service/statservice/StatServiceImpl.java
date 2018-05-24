@@ -6,11 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class StatServiceImpl implements StatService {
@@ -51,6 +47,8 @@ public class StatServiceImpl implements StatService {
                     : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
             map.put("medTotalSum", String.valueOf(median));
         }
+
+        map.put("shopStats",checkRepository.getShopStats());
 
         return map;
     }
