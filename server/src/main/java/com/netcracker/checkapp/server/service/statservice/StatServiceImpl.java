@@ -1,5 +1,6 @@
 package com.netcracker.checkapp.server.service.statservice;
 
+import com.netcracker.checkapp.server.model.DateStats;
 import com.netcracker.checkapp.server.model.check.Check;
 import com.netcracker.checkapp.server.persistance.CheckRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.DateFormatSymbols;
 import java.util.*;
 
 @Service
@@ -54,7 +56,15 @@ public class StatServiceImpl implements StatService {
         }
 
         map.put("shopStats",checkRepository.getShopStats());
-        map.put("dateStats",checkRepository.getDateStats());
+
+        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.ENGLISH);
+        String[] months = dateFormatSymbols.getShortMonths();
+        List<DateStats> dateStats = checkRepository.getDateStats();
+        for (DateStats dateStats1: dateStats) {
+            dateStats1.setId(months[Integer.valueOf(dateStats1.getId())-1]);
+        }
+
+        map.put("dateStats", dateStats);
 
         return map;
     }
