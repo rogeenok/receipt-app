@@ -3,6 +3,7 @@ package com.netcracker.checkapp.server.persistance.customs;
 import com.netcracker.checkapp.server.model.DateStats;
 import com.netcracker.checkapp.server.model.ShopStats;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
@@ -28,7 +29,8 @@ public class CheckRepositoryImpl implements CheckRepositoryCustom {
                         .min("totalSum").as("min")
                         .max("totalSum").as("max")
                         .avg("totalSum").as("avg")
-                        .sum("totalSum").as("sum")
+                        .sum("totalSum").as("sum"),
+                Aggregation.sort(Sort.Direction.ASC,"_id")
         );
 
         AggregationResults<ShopStats> shopStatsAggregationResults
