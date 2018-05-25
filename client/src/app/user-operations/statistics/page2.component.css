@@ -42,3 +42,23 @@
 .shop-info-table td {
   background: lightgoldenrodyellow;
 }
+
+
+.date-info-table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.date-info-table th, .date-info-table td {
+  padding: 4px 30px;
+  border: 1px solid black;
+}
+
+.date-info-table th {
+  background: whitesmoke;
+}
+
+.date-info-table td {
+  background: lightgoldenrodyellow;
+}

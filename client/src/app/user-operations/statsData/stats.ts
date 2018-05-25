@@ -4,6 +4,7 @@ export class Stats {
   maxTotalSum : String;
   avgTotalSum : String;
   shopStats : Shop[];
+  dateStats : Date[];
 }
 
 class Shop {
@@ -11,5 +12,10 @@ class Shop {
   min: number;
   max: number;
   avg: number;
+  sum: number;
+}
+
+class Date {
+  id: String;
   sum: number;
 }

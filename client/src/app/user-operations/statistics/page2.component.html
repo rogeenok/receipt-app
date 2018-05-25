@@ -37,3 +37,17 @@
     </tr>
   </table>
 </div>
+
+<div class="date-info-div">
+  <h3 class="header-common">ПОКУПКИ ПО МЕСЯЦАМ</h3>
+  <table class="date-info-table">
+    <tr>
+      <th>Месяц</th>
+      <th>Общая сумма чеков</th>
+    </tr>
+    <tr *ngFor="let date of stats.dateStats">
+      <td>{{date.id}}</td>
+      <td>{{date.sum}}</td>
+    </tr>
+  </table>
+</div>
