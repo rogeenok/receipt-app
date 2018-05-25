@@ -49,9 +49,9 @@ public class StatServiceImpl implements StatService {
 //                    ? userChecks.get(userChecks.size() / 2).getTotalSum().doubleValue()
 //                    : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
 //            map.put("medTotalSum", String.valueOf(median));
-            BigDecimal avg =
-                    userChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1.add(ts2)).orElse(new BigDecimal(0))
-                            .divide(new BigDecimal(userChecks.size()));
+
+            Double avg =
+                    userChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1 + ts2).orElse(new Double(0)) / userChecks.size();
             map.put("avgTotalSum",String.valueOf(avg));
         }
 

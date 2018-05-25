@@ -19,7 +19,7 @@ public class Converter {
         check.setFiscalSign(nalogRuCheck.getFiscalSign());
         check.setNds10(new BigDecimal(nalogRuCheck.getNds10()).divide(new BigDecimal(100)));
         check.setNds18(new BigDecimal(nalogRuCheck.getNds18()).divide(new BigDecimal(100)));
-        check.setTotalSum(new BigDecimal(nalogRuCheck.getTotalSum()).divide(new BigDecimal(100)));
+        check.setTotalSum(new Double(nalogRuCheck.getTotalSum()) / 100);
         check.setDateTime(LocalDateTime.parse(nalogRuCheck.getDateTime(),
                 DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
         items.forEach(item -> {
