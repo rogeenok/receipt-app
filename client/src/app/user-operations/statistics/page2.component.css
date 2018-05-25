@@ -3,6 +3,9 @@
   font-size: x-large;
 }
 
+.common-info-div, .shop-info-div, .date-info-div {
+  padding: 20px;
+}
 
 .common-info-table {
   text-align: center;
