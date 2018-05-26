@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormatSymbols;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -31,7 +32,8 @@ public class StatServiceImpl implements StatService {
             map.put("totalChecks","0");
             map.put("minTotalSum","0.00");
             map.put("maxTotalSum","0.00");
-            map.put("medTotalSum","0.00");
+            map.put("avgTotalSum","0.00");
+            map.put("totalSum","0.00");
         } else {
 
             userChecks.sort(Comparator.comparing(Check::getTotalSum));
@@ -51,9 +53,11 @@ public class StatServiceImpl implements StatService {
 //                    : (userChecks.get(userChecks.size() / 2 - 1).getTotalSum().add(userChecks.get(userChecks.size() / 2).getTotalSum()).doubleValue()) / 2;
 //            map.put("medTotalSum", String.valueOf(median));
 
+            Integer total = userChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1 + ts2).orElse(new Integer(0));
+            map.put("totalSum",total);
             Double avg =
-                    userChecks.stream().map(Check::getTotalSum).reduce((ts1,ts2) -> ts1 + ts2).orElse(new Double(0)) / userChecks.size();
-            map.put("avgTotalSum",avg);
+                    total.doubleValue() / userChecks.size();
+            map.put("avgTotalSum",BigDecimal.valueOf(avg).setScale(2, RoundingMode.HALF_UP).doubleValue());
         }
 
         map.put("shopStats",checkRepository.getShopStats());
