@@ -9,7 +9,7 @@ export class Stats {
 }
 
 class Shop {
-  id: String;
+  id: string;
   min: number;
   max: number;
   avg: number;
@@ -17,6 +17,6 @@ class Shop {
 }
 
 class Date {
-  id: String;
+  id: string;
   sum: number;
 }

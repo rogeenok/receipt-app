@@ -42,14 +42,14 @@ export class AppComponent {
     this.auth.logout(this.logoutUrl)
       .subscribe(data => {
         this.router.navigate(['/']);
-      }),
+      },
         error => {
       if (error.status == 500) {
         this.proc.showMessage("Произошла ошибка при выходе из аккаунта");
       } else {
         this.proc.showMessage(error.json().message);
       }
-    }
+    });
   }
 
   isAuthenticated() {

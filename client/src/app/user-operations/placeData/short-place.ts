@@ -1,8 +1,8 @@
 import {Coords} from "./coords";
 
 export class ShortPlace {
-  id: String;
-  name: String;
+  id: string;
+  name: string;
   coords: Coords;
   selected: boolean;
 }
