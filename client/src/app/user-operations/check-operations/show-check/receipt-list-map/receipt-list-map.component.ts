@@ -71,7 +71,7 @@ export class ReceiptListMapComponent implements OnInit {
       .subscribe((data) => {
         this.getCheckPlaces = [];
         this.receipts = data;
-        let places: Map<String, ShortPlace> = new Map();
+        let places: Map<string, ShortPlace> = new Map();
         data.forEach(obj => {
           places.set(obj.shortPlace.id, obj.shortPlace);
         });
