@@ -29,7 +29,7 @@ public class Check implements Serializable {
     private String fiscalSign;
     private BigDecimal nds10;
     private BigDecimal nds18;
-    private BigDecimal totalSum;
+    private Integer totalSum;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING)

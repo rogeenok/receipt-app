@@ -20,7 +20,7 @@ export class Page2Component implements OnInit {
   }
 
   getChecksInfo() {
-    this.statsService.getChecks(null)
+    this.statsService.getStats(null)
       .subscribe((data) => {
         this.stats = data;
       },

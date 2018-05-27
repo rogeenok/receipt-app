@@ -1,28 +1,55 @@
-<div class="row component-row">
-  <div class="center_div">
-    <div class="col-md-5 col-md-offset-1">
-      <form #statsForm="ngForm" class="stats_form">
-        <div class="row">
-          <div class="col-md-7"><label class="stats field">Всего чеков пользователя: </label>
-            {{stats.totalChecks}}
-          </div>
-          <div class="col-md-7"><label class="stats field">Минимальная сумма чека: </label>
-            {{stats.minTotalSum}}
-          </div>
-          <div class="col-md-7"><label class="stats field">Максимальная сумма чека: </label>
-            {{stats.maxTotalSum}}
-          </div>
-          <div class="col-md-7"><label class="stats field">Средняя сумма чека: </label>
-            {{stats.medTotalSum}}
-          </div>
-          <div class="col-md-7"><label class="stats field">Всего чеков в системе: </label>
-            {{stats.totalChecksAll}}
-          </div>
-          <div class="col-md-7 col-md-offset-1"><label class="stats field">На сумму: </label>
-            {{stats.totalSumAll}}
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+<div class="common-info-div">
+  <h3 class="header-common">ОБЩАЯ ИНФОРМАЦИЯ</h3>
+  <table class="common-info-table">
+    <tr>
+      <th>Количество чеков</th>
+      <th>Минимальная сумма чека</th>
+      <th>Средняя сумма чека</th>
+      <th>Максимальная сумма чека</th>
+      <th>Общая сумма чеков</th>
+    </tr>
+    <tr>
+      <td>{{stats.totalChecks}}</td>
+      <td>{{stats.minTotalSum}}</td>
+      <td>{{stats.avgTotalSum}}</td>
+      <td>{{stats.maxTotalSum}}</td>
+      <td style="background:lightgreen">{{stats.totalSum}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="shop-info-div">
+  <h3 class="header-common">ПОКУПКИ ПО МАГАЗИНАМ</h3>
+  <table class="shop-info-table">
+    <tr>
+      <th>Название магазина</th>
+      <th>Количество чеков</th>
+      <th>Минимальная сумма чека</th>
+      <th>Средняя сумма чека</th>
+      <th>Максимальная сумма чека</th>
+      <th>Общая сумма чеков</th>
+    </tr>
+    <tr *ngFor="let shop of stats.shopStats">
+      <td>{{shop.id}}</td>
+      <td>{{shop.sum / shop.avg}}</td>
+      <td>{{shop.min}}</td>
+      <td>{{shop.avg}}</td>
+      <td>{{shop.max}}</td>
+      <td>{{shop.sum}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="date-info-div">
+  <h3 class="header-common">ПОКУПКИ ПО МЕСЯЦАМ</h3>
+  <table class="date-info-table">
+    <tr>
+      <th>Месяц</th>
+      <th>Общая сумма чеков</th>
+    </tr>
+    <tr *ngFor="let date of stats.dateStats">
+      <td>{{date.id}}</td>
+      <td>{{date.sum}}</td>
+    </tr>
+  </table>
 </div>
