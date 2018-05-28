@@ -1,0 +1,4 @@
+FROM kaiwinter/docker-java8-maven
+MAINTAINER Igor Konovalov "rogee.nok@gmail.com"
+COPY server ./home/receipt-app/src/server
+RUN mvn -f ./home/receipt-app/src/server/pom-test.xml test

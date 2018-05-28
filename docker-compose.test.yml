@@ -1,0 +1,11 @@
+sut:
+   build: .
+   links:
+     - web
+ web:
+   build: .
+   dockerfile: Dockerfile.test
+   links:
+     - database
+ database:
+   image: "mongo:latest"
