@@ -19,12 +19,12 @@ public class CheckRepositoryImpl implements CheckRepositoryCustom {
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<ShopStats> getShopStats() {
+    public List<ShopStats> getShopStats(String username) {
 
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String principal = username;
 
         Aggregation agg = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("username").is(principal.getUsername())),
+                Aggregation.match(Criteria.where("username").is(principal)),
                 Aggregation.group("shortPlace.name")
                         .min("totalSum").as("min")
                         .max("totalSum").as("max")
@@ -42,13 +42,13 @@ public class CheckRepositoryImpl implements CheckRepositoryCustom {
     }
 
     @Override
-    public List<DateStats> getDateStats() {
+    public List<DateStats> getDateStats(String username) {
 
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String principal = username;
 
         // this will aggregate for all years, so fix it with year as parameter!!
         Aggregation agg = Aggregation.newAggregation(
-                Aggregation.match(Criteria.where("username").is(principal.getUsername())),
+                Aggregation.match(Criteria.where("username").is(principal)),
                 Aggregation.project("totalSum").and("dateTime").extractMonth().as("month"),
                 Aggregation.group("month").sum("totalSum").as("sum")
         );

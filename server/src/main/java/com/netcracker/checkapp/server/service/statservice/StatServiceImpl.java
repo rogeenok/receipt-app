@@ -60,12 +60,12 @@ public class StatServiceImpl implements StatService {
             map.put("avgTotalSum",BigDecimal.valueOf(avg).setScale(2, RoundingMode.HALF_UP).doubleValue());
         }
 
-        map.put("shopStats",checkRepository.getShopStats());
+        map.put("shopStats",checkRepository.getShopStats(((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
 
 //        DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(Locale.ENGLISH);
 //        String[] months = dateFormatSymbols.getShortMonths();
         String[] months = {"Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"};
-        List<DateStats> dateStats = checkRepository.getDateStats();
+        List<DateStats> dateStats = checkRepository.getDateStats(((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
         dateStats = dateStats.stream().sorted(Comparator.comparing(DateStats::getId)).collect(Collectors.toList());
         for (DateStats dateStats1: dateStats) {
             dateStats1.setId(months[Integer.valueOf(dateStats1.getId())-1]);
