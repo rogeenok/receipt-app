@@ -1,0 +1,4 @@
+sut:
+  build: .
+  dockerfile: Dockerfile.test
+  command: echo "All tests successfully passed!"

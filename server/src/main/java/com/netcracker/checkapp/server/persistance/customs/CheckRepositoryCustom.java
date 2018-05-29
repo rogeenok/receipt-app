@@ -11,7 +11,7 @@ public interface CheckRepositoryCustom {
     this method gets statistics for user with grouping by shops: min, avg, max, sum(total) spends
     and it should be implemented customly
     */
-    List<ShopStats> getShopStats();
+    List<ShopStats> getShopStats(String username);
 
-    List<DateStats> getDateStats();
+    List<DateStats> getDateStats(String username);
 }
