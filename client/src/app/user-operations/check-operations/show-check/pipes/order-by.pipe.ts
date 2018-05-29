@@ -42,7 +42,7 @@ export class OrderByPipe implements PipeTransform {
   private sortArray(value: any[], expression?: any, reverse?: boolean, isCaseInsensitive?: boolean): any[] {
     const isDeepLink = expression && expression.indexOf('.') !== -1;
 
-    let array: any[] = value.sort((a: any, b: any): number => {
+    let array: any[] = [...value].sort((a: any, b: any): number => {
       if (!expression) {
         if (isCaseInsensitive) {
           return OrderByPipe.caseInsensitiveSort(a, b);

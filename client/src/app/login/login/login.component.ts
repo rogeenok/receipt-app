@@ -31,11 +31,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/user-operations']);
     },
       error => {
-      if (error.status == 500) {
-        this.proc.showMessage("Произошла ошибка");
-      } else {
-        this.proc.showMessage(error.json().message);
-      }
+        this.showErrorMessage(error,"Произошла ошибка во время входа в систему");
       });
   }
 
@@ -45,12 +41,16 @@ export class LoginComponent implements OnInit {
           this.submit(fullUser);
         },
         error => {
-          if (error.status == 500) {
-            this.proc.showMessage("Произошла ошибка");
-          } else {
-            this.proc.showMessage(error.json().message);
-          }
+          this.showErrorMessage(error,"Произошла ошибка во время регистрации");
         });
+  }
+
+  showErrorMessage(error: any, message : string) {
+    if (error.status == 500) {
+      this.proc.showMessage(message);
+    } else {
+      this.proc.showMessage("Соединение с сервером потеряно");
+    }
   }
 
   ngOnInit() {

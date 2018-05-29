@@ -1,5 +1,5 @@
 {
-  "name": "netcracker-practice-front",
+  "name": "dip-receipt-front",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
+    "npm": "^6.1.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

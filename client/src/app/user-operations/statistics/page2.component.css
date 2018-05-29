@@ -1,12 +1,67 @@
-
-.stat-button {
-  padding: 2px;
-  margin: auto;
+.header-common {
+  text-align: center;
+  font-size: x-large;
 }
 
-.stats_form {
-  margin: auto;
+.common-info-div, .shop-info-div, .date-info-div {
   padding: 5px;
 }
 
+.common-info-table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.common-info-table th, .common-info-table td {
+  padding: 4px 30px;
+  border: 1px solid black;
+}
+
+.common-info-table th {
+  background: whitesmoke;
+}
+
+.common-info-table td {
+  background: lightgoldenrodyellow;
+}
+
+
+.shop-info-table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shop-info-table th, .shop-info-table td {
+  padding: 4px 30px;
+  border: 1px solid black;
+}
+
+.shop-info-table th {
+  background: whitesmoke;
+}
+
+.shop-info-table td {
+  background: lightgoldenrodyellow;
+}
+
+
+.date-info-table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.date-info-table th, .date-info-table td {
+  padding: 4px 30px;
+  border: 1px solid black;
+}
+
+.date-info-table th {
+  background: whitesmoke;
+}
+
+.date-info-table td {
+  background: lightgoldenrodyellow;
+}

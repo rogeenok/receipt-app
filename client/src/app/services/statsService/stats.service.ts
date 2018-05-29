@@ -14,7 +14,7 @@ export class StatsService {
 
   constructor(private http: Http) { }
 
-  getChecks(params: any) {
+  getStats(params: any) {
     return this.http.get(this.url, {params})
       .map(resp => resp.json() as Stats)
       .catch((error: any) => Observable.throw(error));
